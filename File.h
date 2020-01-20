@@ -9,6 +9,8 @@ class File {
 public:
     File(std::string);
 
+    std::string getType();
+    
 private:
     std::map<std::string, std::string> metadata;
     std::string fileType, fileContent;
