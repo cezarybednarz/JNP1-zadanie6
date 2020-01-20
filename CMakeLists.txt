@@ -13,8 +13,13 @@ macro (add_executable _name)
     endif()
 endmacro()
 
+<<<<<<< HEAD
 #add_executable(playlist_example playlist_example.cc Playlist.h PlayingMode.h PlaylistEntry.h)
 add_executable(test test.cc File.cc Track.cc TrackFactory.cc Song.cc)
+=======
+add_executable(playlist_example playlist_example.cc Playlist.h PlayingMode.h PlaylistEntry.h PlayerException.h Player.h)
+add_executable(test test.cc File.cc Track.cc TrackFactory.cc Player.h)
+>>>>>>> 129eab564141438ea2e95b1aef01f5cda4c0e6e3
 # tu mozna dodac nowe executable
 
 install(TARGETS DESTINATION .)
