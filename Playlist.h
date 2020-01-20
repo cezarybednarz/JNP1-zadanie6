@@ -12,7 +12,7 @@ class Playlist : public PlaylistEntry {
 
 public:
 
-    Playlist() = default;
+    Playlist();
     ~Playlist() = default;
 
     void add(const std::shared_ptr<PlaylistEntry> &playlistEntry);
@@ -29,6 +29,10 @@ private:
 
 
 // TODO dodac wyjatki
+
+Playlist::Playlist() {
+	playingMode = std::make_shared<SequenceMode> (createSequenceMode());
+}
 
 void Playlist::add(const std::shared_ptr<PlaylistEntry> &playlistEntry) {
     tracks.push_back(playlistEntry);
