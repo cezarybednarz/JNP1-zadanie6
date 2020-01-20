@@ -28,6 +28,8 @@ private:
 };
 
 
+// TODO dodac wyjatki
+
 void Playlist::add(const std::shared_ptr<PlaylistEntry> &playlistEntry) {
     tracks.push_back(playlistEntry);
 }
