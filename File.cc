@@ -37,6 +37,6 @@ File::File(std::string data) {
 
 }
 
-std::string getType() {
+std::string File::getType() {
     return fileType;
 }

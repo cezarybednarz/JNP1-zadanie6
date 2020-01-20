@@ -8,6 +8,7 @@
 class File {
 public:
     File(std::string);
+    File() = default;
 
     std::string getType();
     
