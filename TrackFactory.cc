@@ -6,5 +6,9 @@ std::shared_ptr<Track> TrackFactory::createTrack(File file) {
 }
 
 void TrackFactory::registerTrack(std::string name, std::shared_ptr<Track> track) {
-    registeredTracks[name] = track;
+    try {
+        registeredTracks[name] = track;
+    } catch (std::bad_alloc &e) {
+        throw new AllocationException();
+    }
 }
