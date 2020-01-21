@@ -20,7 +20,7 @@ class PlaylistException : public PlayerException {
 	}
 };
 
-class AllocationException : public PlaylistException {
+class AllocationException : public PlayerException {
 	const char * what () const throw () {
 		return "AllocationException";
 	}
