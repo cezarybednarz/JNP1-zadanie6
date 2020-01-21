@@ -21,8 +21,8 @@ Track Player::openFile(File file) {
 
 }
 
-Playlist createPlaylist(const std::string& name) {
-
+Playlist Player::createPlaylist(const std::string& name) {
+	return Playlist
 }
 
 #endif //PLAYER_H
