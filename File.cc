@@ -4,7 +4,7 @@
 // std::regex File::matchMetadata("(?:([^|]+)\\|)*");
 std::regex File::matchType("^([a-zA-Z]+)\\|"); // file type should be non-empty alphabetic string
 std::regex File::matchMetadata("^(?:([^:^|]*):([^|]*)\\|)");
-std::regex File::matchContent("^[^|]");
+std::regex File::matchContent("^[a-zA-Z0-9\\s,.!?':;-]*");
 
 File::File(std::string data) {
     std::string::const_iterator it = data.cbegin();
