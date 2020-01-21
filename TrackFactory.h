@@ -1,16 +1,18 @@
 #ifndef TRACK_FACTORY_H
 #define TRACK_FACTORY_H
 
+// map
 
 #include "Track.h"
 #include "File.h"
 
 class TrackFactory {
 public:
-    Track &createTrack(File);
+    std::shared_ptr<Track> createTrack(File);
     
-    void registerTrack(Track&);
+    void registerTrack(std::string, std::shared_ptr<Track>);
 private:
+    std::map<std::string, std::shared_ptr<Track>> registeredTracks;
 };
 
 #endif // TRACK_FACTORY_H

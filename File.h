@@ -8,11 +8,14 @@
 class File {
 public:
     File(std::string);
+    File() = default;
 
-// private:
+    std::string getType();
+    
+private:
     std::map<std::string, std::string> metadata;
     std::string fileType, fileContent;
-    static std::regex matchMetadata;
+    static std::regex matchMetadata, matchType, matchContent;
 };
 
 #endif // FILE_H
