@@ -4,6 +4,7 @@
 #include <string.h>
 #include <regex>
 #include <map>
+#include <optional>
     
 class File {
 public:
@@ -11,6 +12,8 @@ public:
     File() = default;
 
     std::string getType();
+    std::optional<std::string> getMetaData(std::string);
+    std::string getContent();
     
 private:
     std::map<std::string, std::string> metadata;

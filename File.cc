@@ -40,3 +40,13 @@ File::File(std::string data) {
 std::string File::getType() {
     return fileType;
 }
+
+std::optional<std::string> File::getMetaData(std::string fieldName) {
+    if (metadata.find(fieldName) != metadata.end()) 
+        return metadata[fieldName];
+    return {};
+}
+
+std::string File::getContent() {
+    return fileContent;
+}
