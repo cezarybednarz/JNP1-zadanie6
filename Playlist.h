@@ -7,6 +7,7 @@
 
 #include "PlayingMode.h"
 #include "PlaylistEntry.h"
+#include "PlayerException.h"
 
 class Playlist : public PlaylistEntry {
 
