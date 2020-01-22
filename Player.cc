@@ -13,6 +13,6 @@ std::shared_ptr<Track> Player::openFile(File file) {
 }
 
 std::shared_ptr<Playlist> Player::createPlaylist(const std::string& name) {
-	// return Playlist
+	return std::make_shared<Playlist> (Playlist(name));
 }
 

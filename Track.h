@@ -2,10 +2,11 @@
 #define TRACK_H
 
 #include "File.h"
+#include "PlaylistEntry.h"
 
 // TODO try static registration??
 
-class Track {
+class Track : public PlaylistEntry {
 public:
     Track(File file) : file(file) {}
     Track() = default;
