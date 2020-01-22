@@ -3,6 +3,8 @@
 #include "Song.h"
 #include "Movie.h"
 
+TrackFactory Player::factory;
+
 Player::Player() {
     factory.registerTrack("audio", std::make_shared<Song>());
     factory.registerTrack("video", std::make_shared<Movie>());
