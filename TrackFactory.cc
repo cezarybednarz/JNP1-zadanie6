@@ -2,7 +2,11 @@
 #include "PlayerException.h"
 
 std::shared_ptr<Track> TrackFactory::createTrack(File file) {
-    return registeredTracks[file.getType()]->newTrack(file); // todo throw when unsupported type
+    if (registeredTracks.find(file.getType()) != registeredTracks.end()) {
+        return registeredTracks[file.getType()]->newTrack(file);
+    } else {
+        throw FileException("unsupported type");
+    }
 }
 
 void TrackFactory::registerTrack(std::string name, std::shared_ptr<Track> track) {

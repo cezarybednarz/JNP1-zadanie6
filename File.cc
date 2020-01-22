@@ -3,7 +3,7 @@
 #include "PlayerException.h"
 
 // std::regex File::matchMetadata("(?:([^|]+)\\|)*");
-std::regex File::matchType("^(.+)\\|"); // file type should string
+std::regex File::matchType("^([^|]+)\\|"); // file type should be non-empty string without '|'
 std::regex File::matchMetadata("^(?:([^:^|]*):([^|]*)\\|)");
 std::regex File::matchContent("^[a-zA-Z0-9\\s,.!?':;-]*$"); // todo check if '-' matches correctly
 
