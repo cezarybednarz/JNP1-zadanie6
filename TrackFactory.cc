@@ -1,5 +1,5 @@
 #include "TrackFactory.h"
-
+#include "PlayerException.h"
 
 std::shared_ptr<Track> TrackFactory::createTrack(File file) {
     return registeredTracks[file.getType()]->newTrack(file);

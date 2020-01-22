@@ -52,7 +52,7 @@ std::string File::getType() {
 }
 
 std::optional<std::string> File::getMetaData(std::string fieldName) {
-    if (metadata.contains(fieldName)) 
+    if (metadata.find(fieldName) != metadata.end()) 
         return metadata[fieldName];
     return {};
 }

@@ -1,15 +1,18 @@
 #include "lib_playlist.h"
 
+#include "Song.h"
+#include "Movie.h"
+
 Player::Player() {
     factory.registerTrack("audio", std::make_shared<Song>());
     factory.registerTrack("video", std::make_shared<Movie>());
 }
 
 std::shared_ptr<Track> Player::openFile(File file) {
-    return factory.newTrack(file);
+    return factory.createTrack(file);
 }
 
 std::shared_ptr<Playlist> Player::createPlaylist(const std::string& name) {
-	return Playlist
+	// return Playlist
 }
 
