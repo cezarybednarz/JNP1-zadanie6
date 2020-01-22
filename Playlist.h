@@ -12,8 +12,9 @@ class Playlist : public PlaylistEntry {
 
 public:
 
-    Playlist();
+    explicit Playlist(const std::string& _name);
     ~Playlist() = default;
+
 
     void add(const std::shared_ptr<PlaylistEntry> &playlistEntry);
     void add(const std::shared_ptr<PlaylistEntry> &playlistEntry, size_t position);
@@ -23,6 +24,7 @@ public:
     void play() override;
 
 private:
+	std::string name;
     std::vector<std::shared_ptr<PlaylistEntry>> tracks;
     std::shared_ptr<PlayingMode> playingMode;
 };

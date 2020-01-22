@@ -1,6 +1,8 @@
 #ifndef LIB_PLAYLIST_H
 #define LIB_PLAYLIST_H
 
+#include "Song.h"
+#include "Movie.h"
 #include "Playlist.h"
 #include "File.h"
 #include "TrackFactory.h"
@@ -14,7 +16,7 @@ public:
 	~Player() = default;
 
 	std::shared_ptr<Track> openFile(File file);
-	std::shared_ptr<Playlist> createPlaylist(const std::string& name);
+	static std::shared_ptr<Playlist> createPlaylist(const std::string& name);
 
 private:
     static TrackFactory factory;

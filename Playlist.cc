@@ -4,8 +4,9 @@
 // TODO dodac wyjatki
 // TODO sprawdzać czy playlista tworzy cykl
 
-Playlist::Playlist() {
-    playingMode = std::make_shared<SequenceMode> (createSequenceMode());
+Playlist::Playlist(const std::string& _name) {
+    playingMode = createSequenceMode();
+	name = _name;
 }
 
 void Playlist::add(const std::shared_ptr<PlaylistEntry> &playlistEntry) {
