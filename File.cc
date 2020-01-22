@@ -14,8 +14,8 @@ File::File(std::string data) {
         
         // match file type
         if (!std::regex_search(data, match, matchType)) {
-            std::cout << "not matched" << std::endl;
-            throw new FileException();
+            // std::cout << "not matched" << std::endl;
+            throw FileException();
         } else {
             fileType = match[1];
             it = match[0].second; // TODO co jak wyjdzie poza stringa
@@ -31,19 +31,19 @@ File::File(std::string data) {
         
         // match file content
         if (!std::regex_search(it, data.cend(), match, matchContent)) {
-            std::cout << "not matched" << std::endl;
-            throw new FileException();
+            // std::cout << "not matched" << std::endl;
+            throw FileException();
         } else {
             fileContent = match[0];
         }
     } catch (std::bad_alloc &e) {
-        throw new AllocationException();
+        throw AllocationException();
     } catch (std::regex_error &e) {
-        throw new FileException();
+        throw FileException();
     } catch (FileException &e) {
         throw; 
     } catch (...) {
-        throw new PlayerException();
+        throw PlayerException();
     }
 }
 
