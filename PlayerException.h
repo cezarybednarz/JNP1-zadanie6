@@ -4,37 +4,34 @@
 
 class PlayerException : public std::exception {
 public:
-	const char * what () const throw () {
-		return "PlayerException";
-	}
+    PlayerException(std::string msg) : msg(msg) {}
+    
+    const char * what () const throw () {
+        return msg.c_str();
+    }
+    
+private:
+    std::string msg;
 };
 
 class FileException : public PlayerException {
 public:
-	const char * what () const throw () {
-		return "FileException";
-	}
+    FileException(std::string msg) : PlayerException(msg) {}
 };
 
 class PlaylistException : public PlayerException {
 public:
-	const char * what () const throw () {
-		return "PlaylistException";
-	}
+    PlaylistException(std::string msg) : PlayerException(msg) {}
 };
 
 class AllocationException : public PlayerException {
 public:
-	const char * what () const throw () {
-		return "AllocationException";
-	}
+    AllocationException(std::string msg) : PlayerException(msg) {}
 };
 
 class IndexOutOfRange : public PlaylistException {
 public:
-	const char * what () const throw () {
-		return "IndexOutOfRange";
-	}
+    IndexOutOfRange(std::string msg) : PlaylistException(msg) {}
 };
 
 #endif //PLAYEREXCEPTION_H

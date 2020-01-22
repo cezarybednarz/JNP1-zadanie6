@@ -2,7 +2,7 @@ cmake_minimum_required (VERSION 3.1)
 project (JNP1-zadanie6 CXX)
 
 set(CMAKE_CXX_STANDARD 17)
-set(CMAKE_CXX_FLAGS "-Wall -Wextra -O2")
+set(CMAKE_CXX_FLAGS "-Wall -Wextra -O2 -g")
 
 # http://stackoverflow.com/questions/10555706/
 macro (add_executable _name)
