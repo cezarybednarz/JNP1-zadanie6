@@ -5,6 +5,7 @@
 #include "File.h"
 #include "TrackFactory.h"
 #include "Track.h"
+#include "PlayerException.h"
 
 class Player {
 public:
