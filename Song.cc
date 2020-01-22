@@ -6,11 +6,11 @@
 
 Song::Song(File file) : Track(file) {
     if (!file.getMetaData("artist").has_value()) {
-        throw new FileException();
+        throw new FileException("missing artist");
     }
 
     if (!file.getMetaData("title").has_value()) {
-        throw new FileException();
+        throw new FileException("missing title");
     }
 }
 

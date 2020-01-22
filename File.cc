@@ -3,9 +3,9 @@
 #include "PlayerException.h"
 
 // std::regex File::matchMetadata("(?:([^|]+)\\|)*");
-std::regex File::matchType("^([a-zA-Z]+)\\|"); // file type should be non-empty alphabetic string
+std::regex File::matchType("^(.+)\\|"); // file type should string
 std::regex File::matchMetadata("^(?:([^:^|]*):([^|]*)\\|)");
-std::regex File::matchContent("^[a-zA-Z0-9\\s,.!?':;-]*$");
+std::regex File::matchContent("^[a-zA-Z0-9\\s,.!?':;-]*$"); // todo check if '-' matches correctly
 
 File::File(std::string data) {
     try {
@@ -15,7 +15,7 @@ File::File(std::string data) {
         // match file type
         if (!std::regex_search(data, match, matchType)) {
             // std::cout << "not matched" << std::endl;
-            throw FileException();
+            throw FileException(std::string("corrupt file"));
         } else {
             fileType = match[1];
             it = match[0].second; // TODO co jak wyjdzie poza stringa
@@ -32,18 +32,18 @@ File::File(std::string data) {
         // match file content
         if (!std::regex_search(it, data.cend(), match, matchContent)) {
             // std::cout << "not matched" << std::endl;
-            throw FileException();
+            throw FileException(std::string("corrupt content"));
         } else {
             fileContent = match[0];
         }
     } catch (std::bad_alloc &e) {
-        throw AllocationException();
+        throw AllocationException("allocation failed");
     } catch (std::regex_error &e) {
-        throw FileException();
+        throw FileException("regular expression failed");
     } catch (FileException &e) {
         throw; 
     } catch (...) {
-        throw PlayerException();
+        throw PlayerException("something went wrong");
     }
 }
 
