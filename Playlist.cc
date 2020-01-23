@@ -9,12 +9,17 @@ Playlist::Playlist(const std::string& _name) {
 bool Playlist::existsInPlaylist(const std::shared_ptr<PlaylistEntry> &currentPlaylist,
                                 const std::shared_ptr<PlaylistEntry> &checkPlaylist) {
 
-    if(typeid(currentPlaylist.get()) == typeid(Playlist)) {
-        for(const auto &item : dynamic_cast<Playlist*>(currentPlaylist.get())->tracks) {
-            if(item == checkPlaylist) {
-                return true;
-            }
-            if(!existsInPlaylist(item, checkPlaylist)) {
+    if(currentPlaylist == checkPlaylist) { // todo tutaj jest blad
+        printf("co jest\n");
+        return true;
+    }
+
+    std::cout << "wszedlem >>> " << dynamic_cast<Playlist*>(currentPlaylist.get())->name << " " <<
+    dynamic_cast<Playlist*>(checkPlaylist.get())->name << "\n";
+
+    if(typeid(currentPlaylist.get()) == typeid(checkPlaylist.get())) {
+        for(auto &item : dynamic_cast<Playlist*>(currentPlaylist.get())->tracks) {
+            if(existsInPlaylist(item, checkPlaylist)) {
                 return true;
             }
         }
@@ -25,7 +30,7 @@ bool Playlist::existsInPlaylist(const std::shared_ptr<PlaylistEntry> &currentPla
 void Playlist::add(const std::shared_ptr<PlaylistEntry> &playlistEntry) {
     bool nested;
     try {
-        nested = existsInPlaylist(std::make_shared<Playlist>(*this), playlistEntry);
+        nested = existsInPlaylist(playlistEntry, std::make_shared<Playlist>(*this));
     } catch (std::exception &e) {
         throw PlaylistException("failed trying to check self-adding");
     }
@@ -33,6 +38,7 @@ void Playlist::add(const std::shared_ptr<PlaylistEntry> &playlistEntry) {
         throw PlaylistException("playlist nested in itself");
     }
 
+    std::cout << " >>> " << nested << "\n";
 
     try {
         tracks.push_back(playlistEntry);
@@ -44,7 +50,7 @@ void Playlist::add(const std::shared_ptr<PlaylistEntry> &playlistEntry) {
 void Playlist::add(const std::shared_ptr<PlaylistEntry> &playlistEntry, size_t position) {
     bool nested;
     try {
-        nested = existsInPlaylist(std::make_shared<Playlist>(*this), playlistEntry);
+        nested = existsInPlaylist(playlistEntry, std::make_shared<Playlist>(*this));
     } catch (std::exception &e) {
         throw PlaylistException("failed trying to check self-adding");
     }
