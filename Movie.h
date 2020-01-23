@@ -3,6 +3,7 @@
 
 #include "File.h"
 #include "Track.h"
+#include <string>
 
 // TODO try static registration??
 
@@ -12,6 +13,9 @@ public:
     Movie(File);
     void play() override;
     std::shared_ptr<Track> newTrack(File) override;
+    
+private:
+    static std::string decode(std::string);
 };
 
 #endif // MOVIE_H
