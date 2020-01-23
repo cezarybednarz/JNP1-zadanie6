@@ -81,6 +81,7 @@ void Playlist::setMode(const std::shared_ptr<PlayingMode> &mode) {
 }
 
 void Playlist::play() {
+    std::cout << "Playlist [" << name << "]\n";
     try {
         std::vector<size_t> order = playingMode->getOrder(tracks.size());
         for (size_t id : order) {
