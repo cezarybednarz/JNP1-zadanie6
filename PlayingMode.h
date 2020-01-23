@@ -9,7 +9,7 @@ class PlayingMode {
 
 public:
     PlayingMode() = default;
-    ~PlayingMode() = default;
+    virtual ~PlayingMode() = default;
 
     virtual std::vector<size_t> getOrder(size_t size) = 0;
 };

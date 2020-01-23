@@ -5,6 +5,7 @@ class PlaylistEntry {
 public:
     virtual void play() = 0;
 	virtual bool exists(PlaylistEntry* elem);
+    virtual ~PlaylistEntry() = default;
 };
 
 #endif // PLAYLISTENTRY_H

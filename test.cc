@@ -2,12 +2,21 @@
 
 #include "lib_playlist.h"
 
-int main() {
+void cycle_test1();
 
-    // testuje sprawdzanie zagniezdzenia przy playlist->add
+int main() {
+    // cycle_test1();
 
     Player player;
+    
+    auto song = player.openFile(File("audio|title:drivers|artist:car|whales"));
+    
+    return 0;
+}
 
+void cycle_test1() {
+    Player player;
+    
     auto A = player.createPlaylist("A");
     auto B = player.createPlaylist("B");
     auto C = player.createPlaylist("C");
@@ -18,16 +27,43 @@ int main() {
     B->add(C);
     A->play();
 
-    C->add(A); // powinno zwracac wyjatek
-
-    //A->play();
-
-
-    //mishmash->play();
+    // making C_3 
+    try {
+        C->add(A); // powinno zwracac wyjatek
+        std::cout << __FUNCTION__ << ":" << __LINE__ << " failed" << std::endl;
+        return;
+    } catch (PlayerException &e) {}
     
-    // for (auto a : f.metadata) {
-    //     std::cout << a.first << ": " << a.second << std::endl;
-    // }
+    // adding playlist to itself
+    try {
+        A->add(A); // powinno zwracac wyjatek
+        std::cout << __FUNCTION__ << ":" << __LINE__ << " failed" << std::endl;
+        return;
+    } catch (PlayerException &e) {}
     
-    return 0;
+    auto A_prim = A;
+    
+    // adding playlist to itself, but copied
+    try {
+        A->add(A_prim); // powinno zwracac wyjatek
+        std::cout << __FUNCTION__ << ":" << __LINE__ << " failed" << std::endl;
+        return;
+    } catch (PlayerException &e) {}
+    
+    try { 
+        A_prim->add(A); // powinno zwracac wyjatek
+        std::cout << __FUNCTION__ << ":" << __LINE__ << " failed" << std::endl;
+        return;
+    } catch (PlayerException &e) {}
+    
+    // adding one playlist to another many times
+    try { 
+        for (int i = 0; i < 10; i++)
+            A->add(B);
+    } catch (PlayerException &e) {
+        std::cout << __FUNCTION__ << ":" << __LINE__ << " failed" << std::endl;
+        return;
+    }
+    
+    std::cout << __FUNCTION__ << " OK" << std::endl;
 }

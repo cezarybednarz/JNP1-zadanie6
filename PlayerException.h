@@ -5,6 +5,7 @@
 class PlayerException : public std::exception {
 public:
     PlayerException(std::string msg) : msg(msg) {}
+    virtual ~PlayerException() = default;
     
     const char * what () const throw () {
         return msg.c_str();
@@ -22,6 +23,7 @@ public:
 class PlaylistException : public PlayerException {
 public:
     PlaylistException(std::string msg) : PlayerException(msg) {}
+    virtual ~PlaylistException() = default;
 };
 
 class AllocationException : public PlayerException {
