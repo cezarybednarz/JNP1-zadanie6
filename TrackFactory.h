@@ -8,7 +8,7 @@
 
 class TrackFactory {
 public:
-    std::shared_ptr<Track> createTrack(File);
+    std::shared_ptr<Track> createTrack(const File) const;
     
     void registerTrack(std::string, std::shared_ptr<Track>);
 private:

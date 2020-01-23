@@ -22,7 +22,7 @@ public:
     void remove();
     void remove(size_t position);
     void setMode(const std::shared_ptr<PlayingMode> &mode);
-    void play() override;
+    void play() const override;
     bool exists(PlaylistEntry *elem) override;
 private:
 

@@ -11,7 +11,7 @@ public:
     Track(File file) : file(file) {}
     Track() = default;
     virtual ~Track() = default;
-    virtual void play() = 0;
+    virtual void play() const = 0;
     virtual std::shared_ptr<Track> newTrack(File) = 0;
 
 protected:

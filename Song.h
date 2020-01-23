@@ -13,7 +13,7 @@ public:
     Song() = default;
     Song(File);
     ~Song() = default;
-    void play() override;
+    void play() const override;
     std::shared_ptr<Track> newTrack(File) override;
 };
 

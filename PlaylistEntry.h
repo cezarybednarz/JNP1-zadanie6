@@ -3,7 +3,7 @@
 
 class PlaylistEntry {
 public:
-    virtual void play() = 0;
+    virtual void play() const = 0;
 	virtual bool exists(PlaylistEntry* elem);
     virtual ~PlaylistEntry() = default;
 };

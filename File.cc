@@ -47,16 +47,17 @@ File::File(std::string data) {
     }
 }
 
-std::string File::getType() {
+std::string File::getType() const {
     return fileType;
 }
 
-std::optional<std::string> File::getMetaData(std::string fieldName) {
-    if (metadata.find(fieldName) != metadata.end()) 
-        return metadata[fieldName];
+std::optional<std::string> File::getMetaData(const std::string fieldName) const {
+    auto it = metadata.find(fieldName);
+    if (it != metadata.end()) 
+        return it->second;
     return {};
 }
 
-std::string File::getContent() {
+std::string File::getContent() const {
     return fileContent;
 }

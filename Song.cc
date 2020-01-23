@@ -14,7 +14,7 @@ Song::Song(File file) : Track(file) {
     }
 }
 
-void Song::play() {
+void Song::play() const {
     std::cout << "Song [";
     std::cout << file.getMetaData("artist").value() << ", ";
     std::cout << file.getMetaData("title").value() << "]: ",

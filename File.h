@@ -11,9 +11,9 @@ public:
     File(std::string);
     File() = default;
 
-    std::string getType();
-    std::optional<std::string> getMetaData(std::string);
-    std::string getContent();
+    std::string getType() const;
+    std::optional<std::string> getMetaData(const std::string) const;
+    std::string getContent() const;
     
 private:
     std::map<std::string, std::string> metadata; // todo shared_ptr, żeby nie kopiować(?)

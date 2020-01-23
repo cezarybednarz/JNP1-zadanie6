@@ -39,7 +39,7 @@ std::string Movie::decode(std::string content) {
     return content;
 }
 
-void Movie::play() {
+void Movie::play() const {
     std::cout << "Movie [";
     std::cout << file.getMetaData("title").value() << ", ";
     std::cout << file.getMetaData("year").value() << "]: ",
