@@ -23,14 +23,12 @@ public:
     void remove(size_t position);
     void setMode(const std::shared_ptr<PlayingMode> &mode);
     void play() override;
+    bool exists(PlaylistEntry *elem) override;
 private:
 
 	std::string name;
     std::vector<std::shared_ptr<PlaylistEntry>> tracks;
     std::shared_ptr<PlayingMode> playingMode;
-
-    static bool existsInPlaylist(const std::shared_ptr<PlaylistEntry> &currentPlaylist,
-                                 const std::shared_ptr<PlaylistEntry> &newPlaylist);
 };
 
 #endif // PLAYLIST_H
