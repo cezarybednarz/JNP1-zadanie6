@@ -9,7 +9,6 @@ std::vector<size_t> SequenceMode::getOrder(size_t size) {
     return ret;
 };
 
-
 ShuffleMode::ShuffleMode(int seed) : randomEngine(std::default_random_engine(seed)) { }
 
 std::vector<size_t> ShuffleMode::getOrder(size_t size) {
@@ -24,7 +23,6 @@ std::vector<size_t> ShuffleMode::getOrder(size_t size) {
     }
     return ret;
 }
-
 
 std::vector<size_t> OddEvenMode::getOrder(size_t size) {
     std::vector<size_t> ret;

@@ -4,10 +4,6 @@
 #include "File.h"
 #include "Track.h"
 
-#include <iostream>
-
-// TODO try static registration??
-
 class Song : public Track {
 public:
     Song() = default;

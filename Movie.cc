@@ -4,8 +4,8 @@
 
 #include "PlayerException.h"
 
-// year has to be number. Can be empty
-std::regex Movie::matchYear("[0-9]*");
+// year has to be number. Can not be empty
+std::regex Movie::matchYear("[0-9]+");
 
 Movie::Movie(File file) : Track(file) {
     if (!file.getMetaData("title").has_value()) {

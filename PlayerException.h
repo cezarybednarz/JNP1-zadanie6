@@ -1,5 +1,6 @@
 #ifndef PLAYEREXCEPTION_H
 #define PLAYEREXCEPTION_H
+
 #include <exception>
 
 class PlayerException : public std::exception {

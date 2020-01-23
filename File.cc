@@ -1,11 +1,11 @@
 #include <iostream>
+
 #include "File.h"
 #include "PlayerException.h"
 
-// std::regex File::matchMetadata("(?:([^|]+)\\|)*");
 std::regex File::matchType("^([^|]+)\\|"); // file type should be non-empty string without '|'
 std::regex File::matchMetadata("^(?:([^:^|]*):([^|]*)\\|)");
-std::regex File::matchContent("^[a-zA-Z0-9\\s,.!?':;-]*$"); // todo check if '-' matches correctly
+std::regex File::matchContent("^[a-zA-Z0-9\\s,.!?':;-]*$");
 
 File::File(std::string data) {
     try {
@@ -14,16 +14,14 @@ File::File(std::string data) {
         
         // match file type
         if (!std::regex_search(data, match, matchType)) {
-            // std::cout << "not matched" << std::endl;
             throw FileException(std::string("corrupt file"));
         } else {
             fileType = match[1];
-            it = match[0].second; // TODO co jak wyjdzie poza stringa
+            it = match[0].second; 
         }
         
         // match all metadata
         while (std::regex_search(it, data.cend(), match, matchMetadata)) {
-            // std::cout << "matched metadata: " << match[1] << "->" << match[2] << std::endl;
             metadata[match[1]] = match[2];
             
             it = match[0].second;
@@ -31,7 +29,6 @@ File::File(std::string data) {
         
         // match file content
         if (!std::regex_search(it, data.cend(), match, matchContent)) {
-            // std::cout << "not matched" << std::endl;
             throw FileException(std::string("corrupt content"));
         } else {
             fileContent = match[0];

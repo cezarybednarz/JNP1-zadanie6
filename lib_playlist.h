@@ -11,12 +11,11 @@
 
 class Player {
 public:
+    Player();
+    ~Player() = default;
 
-	Player();
-	~Player() = default;
-
-	std::shared_ptr<Track> openFile(File file);
-	static std::shared_ptr<Playlist> createPlaylist(const std::string& name);
+    std::shared_ptr<Track> openFile(File file);
+    static std::shared_ptr<Playlist> createPlaylist(const std::string& name);
 
 private:
     static TrackFactory factory;

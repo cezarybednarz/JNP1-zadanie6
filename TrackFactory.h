@@ -1,8 +1,6 @@
 #ifndef TRACK_FACTORY_H
 #define TRACK_FACTORY_H
 
-// map
-
 #include "Track.h"
 #include "File.h"
 

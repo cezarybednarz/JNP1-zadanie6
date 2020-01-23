@@ -16,7 +16,7 @@ public:
     std::string getContent() const;
     
 private:
-    std::map<std::string, std::string> metadata; // todo shared_ptr, żeby nie kopiować(?)
+    std::map<std::string, std::string> metadata;
     std::string fileType, fileContent;
     static std::regex matchMetadata, matchType, matchContent;
 };

@@ -1,7 +1,6 @@
 #include "Song.h"
 
 #include <iostream>
-
 #include "PlayerException.h"
 
 Song::Song(File file) : Track(file) {

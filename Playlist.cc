@@ -2,19 +2,19 @@
 
 Playlist::Playlist(const std::string& _name) {
     playingMode = createSequenceMode();
-	name = _name;
+    name = _name;
 }
 
 bool Playlist::exists(PlaylistEntry *elem) {
-	if(elem == this) {
-		return true;
-	}
-	for(const auto &entry : tracks) {
-		if(entry->exists(elem)) {
-			return true;
-		}
-	}
-	return false;
+    if (elem == this) {
+        return true;
+    }
+    for (const auto &entry : tracks) {
+        if (entry->exists(elem)) {
+            return true;
+        }
+    }
+    return false;
 }
 
 void Playlist::add(const std::shared_ptr<PlaylistEntry> &playlistEntry) {
@@ -24,7 +24,7 @@ void Playlist::add(const std::shared_ptr<PlaylistEntry> &playlistEntry) {
     } catch (std::exception &e) {
         throw PlaylistException("failed trying to check self-adding");
     }
-    if(nested) {
+    if (nested) {
         throw PlaylistException("playlist nested in itself");
     }
 
@@ -38,15 +38,15 @@ void Playlist::add(const std::shared_ptr<PlaylistEntry> &playlistEntry) {
 void Playlist::add(const std::shared_ptr<PlaylistEntry> &playlistEntry, size_t position) {
     bool nested;
     try {
-		nested = playlistEntry->exists(this);
+        nested = playlistEntry->exists(this);
     } catch (std::exception &e) {
         throw PlaylistException("failed trying to check self-adding");
     }
-    if(nested) {
+    if (nested) {
         throw PlaylistException("playlist nested in itself");
     }
 
-    if(position <= tracks.size()) {
+    if (position <= tracks.size()) {
         tracks.emplace(tracks.begin()+position, playlistEntry);
     } else {
         throw IndexOutOfRange("index out of range");
@@ -54,7 +54,7 @@ void Playlist::add(const std::shared_ptr<PlaylistEntry> &playlistEntry, size_t p
 }
 
 void Playlist::remove() {
-    if(!tracks.empty()) {
+    if (!tracks.empty()) {
         tracks.pop_back();
     } else {
         throw PlaylistException("remove() on empty playlist");
@@ -63,7 +63,7 @@ void Playlist::remove() {
 }
 
 void Playlist::remove(size_t position) {
-    if(position < tracks.size()) {
+    if (position < tracks.size()) {
         tracks.erase(tracks.begin()+position);
     } else {
         throw IndexOutOfRange("index out of range");

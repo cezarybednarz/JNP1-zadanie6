@@ -1,12 +1,11 @@
 #ifndef MOVIE_H
 #define MOVIE_H
 
-#include "File.h"
-#include "Track.h"
 #include <string>
 #include <regex>
 
-// TODO try static registration??
+#include "File.h"
+#include "Track.h"
 
 class Movie : public Track {
 public:

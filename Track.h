@@ -3,8 +3,6 @@
 
 #include "File.h"
 #include "PlaylistEntry.h"
-#include <iostream> 
-// TODO try static registration??
 
 class Track : public PlaylistEntry {
 public:
