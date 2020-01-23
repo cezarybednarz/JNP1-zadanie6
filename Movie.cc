@@ -6,11 +6,11 @@
 
 Movie::Movie(File file) : Track(file) {
     if (!file.getMetaData("title").has_value()) {
-        throw new FileException("missing title");
+        throw FileException("missing title");
     }
 
     if (!file.getMetaData("year").has_value()) { // TODO check year
-        throw new FileException("missing year");
+        throw FileException("missing year");
     }
 }
 

@@ -13,6 +13,6 @@ void TrackFactory::registerTrack(std::string name, std::shared_ptr<Track> track)
     try {
         registeredTracks[name] = track;
     } catch (std::bad_alloc &e) {
-        throw new AllocationException("allocation failed");
+        throw AllocationException("allocation failed");
     }
 }
