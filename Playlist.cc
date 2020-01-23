@@ -6,7 +6,6 @@ Playlist::Playlist(const std::string& _name) {
 }
 
 bool Playlist::exists(PlaylistEntry *elem) {
-	std::cout << name << " << \n";
 	if(elem == this) {
 		return true;
 	}
